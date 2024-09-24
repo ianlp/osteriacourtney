@@ -1307,7 +1307,7 @@ html body .intro { font-family: Neuton, Constantia, "Lucida Bright", Lucidabrigh
 	align-items: center; } div#text-7 {
     margin-left: auto;        margin-top: 220px;
 }.c-footer__zone.c-footer__zone--middle {
-    min-width: 50%;
+	width: 320px;
 }}
 @media only screen and (max-width: 1360px) {.c-footer { font-size: 23px; } }
 @media only screen and (max-width: 1024px) {.c-footer { font-size: 21px; } }
@@ -1372,7 +1372,7 @@ html body .intro { font-family: Neuton, Constantia, "Lucida Bright", Lucidabrigh
 <style type="text/css" id="wp-custom-css">.blog .c-hero__scroll-arrow { display: none; }
 
 .c-footer > div:first-child:before {
-	content: url('/wp-content/uploads/sites/25/2017/02/logo-footer.png');
+	content: url('/wp-content/logo-white.svg');
 	display:block;
 	margin-top: 55px;
 	margin-bottom: 100px;
@@ -1440,24 +1440,54 @@ html body .intro { font-family: Neuton, Constantia, "Lucida Bright", Lucidabrigh
 <div class="c-navbar__content  u-header-background">
 <div class="c-navbar__zone c-navbar__zone--left">
 <div class="header nav">
-<div class="c-branding">
-<div class="c-logo">
-<div class="c-logo__default">
-<a href="/" class="custom-logo-link" rel="home" aria-current="page"><img  src="/wp-content/uploads/sites/25/2017/05/logo-black.svg" class="custom-logo" alt="Osteria" data-attachment-id="3097" data-permalink="/logo-black/" data-orig-file="/wp-content/uploads/sites/25/2017/05/logo-black.svg" data-orig-size data-comments-opened="1" data-image-meta="[]" data-image-title="logo-black" data-image-description data-image-caption data-medium-file="/wp-content/uploads/sites/25/2017/05/logo-black.svg" data-large-file="/wp-content/uploads/sites/25/2017/05/logo-black.svg" /></a> </div>
-<div class="c-logo__inverted">
-<a href="/" class="custom-logo-link  custom-logo-link--inversed" rel="home" itemprop="url" style="width: 300px;aspect-ratio: 1/1;height: 300px">
-	<img width="127" height="26" src="/wp-content/logo-white.svg" class="custom-logo--transparent" alt="logo"/>
 
-</a> </div>
+
+<a href="/" class="custom-logo-link" rel="home" aria-current="page"><img  src="/wp-content/uploads/sites/25/2017/05/logo-black.svg" class="custom-logo" alt="Osteria" data-attachment-id="3097" data-permalink="/logo-black/" data-orig-file="/wp-content/uploads/sites/25/2017/05/logo-black.svg" data-orig-size data-comments-opened="1" data-image-meta="[]" data-image-title="logo-black" data-image-description data-image-caption data-medium-file="/wp-content/uploads/sites/25/2017/05/logo-black.svg" data-large-file="/wp-content/uploads/sites/25/2017/05/logo-black.svg" /></a> </div>
+<div class="logo-container">
+<a href="/" class="\" rel="home" itemprop="url" >
+	<img src="/wp-content/logo-white.svg" class="logo show" alt="logo"/>
+	<img src="/wp-content/logo-black.svg" class="logo hide" alt="logo"/>
+
+</a> 
 </div>
+
+<style>
+	.logo-container {
+		position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 70vw;
+  height: calc(70vw * 75 / 128); 
+}
+
+.logo-container .logo {
+  width: 100%; 
+  height: 100%;
+  object-fit: contain;
+}
+
+.hide {
+	display: none;
+}
+
+.site-header.u-header-background.site-header--not-top .show {
+	display: none;
+}
+
+.site-header.u-header-background.site-header--not-top .hide {
+	display: block;
+}
+	</style>
 <a class="c-logo__title" href="/" rel="home">
 <h1 class="site-title">Osteria<br />Courtney</h1>
 </a>
 <p class="site-description site-description-text">Redefined Italian Cuisine</p>
+
 </div>
-</div> </div>
 <div class="c-navbar__zone c-navbar__zone--middle">
-<nav class="menu-main-menu-container"><ul id="menu-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-2431"><a href="/menu/" data-color="#0a0a0a">Menu</a>
+<!-- <nav class="menu-main-menu-container"><ul id="menu-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page  menu-item-2431"><a href="/menu/" data-color="#0a0a0a">Menu</a>
 
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2092"><a href="/reservations/" data-color="#333333">Reservations</a></li>
@@ -1466,7 +1496,8 @@ html body .intro { font-family: Neuton, Constantia, "Lucida Bright", Lucidabrigh
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2053"><a href="/about/" data-color="#333333">About</a></li>
 
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2480"><a href="/contact/" data-color="#333333">Contact</a></li>
-</ul></nav> 
+</ul>
+</nav>  -->
 
 </div>
 <div class="c-navbar__zone c-navbar__zone--right c-navbar__zone--push-right">
@@ -1493,18 +1524,12 @@ html body .intro { font-family: Neuton, Constantia, "Lucida Bright", Lucidabrigh
 <div class="c-hero__content">
 <div class="hero_description_content">
 <div class="hero_description_content">
-<h1 class="display">Osteria<br />Courtney</h1>
-<h3>REDEFINED ITALIAN CUISINE</h3>
+<!-- <h1 class="display">Osteria<br />Courtney</h1>
+<h3>REDEFINED ITALIAN CUISINE</h3> -->
 </div>
 </div>
-<div class="c-hero__scroll-arrow">
-<svg class="arrows" width="22px" height="16px" viewBox="0 0 22 16">
-<g id="arrow-down" transform="translate(1.000000, 1.000000)" stroke="currentColor" stroke-width="1" fill="none" fill-rule="evenodd">
-<path d="M20.1428571,0.0563380282 L10,7.94366197 L-0.142857143,0.0563380282" id="arrow-1"></path>
-<path d="M20.1428571,6.05633803 L10,13.943662 L-0.142857143,6.05633803" id="arrow-2"></path>
-</g>
-</svg>
-</div> </div>
+
+</div>
 </div>
 <div class="c-hero__sidebar">
 <div class="o-wrapper  u-container-width">
@@ -1979,6 +2004,28 @@ var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$
 "use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
 }());
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  // GSAP animation
+  gsap.to(".logo", {
+    scrollTrigger: {
+      trigger: ".content", // Start animation when content enters the view
+      start: "top top",    // Animation starts when the top of the content hits the top of the viewport
+      end: "+=500",        // Define the distance over which the animation happens
+      scrub: true,         // Smooth scroll animation
+    },
+    scale: 0.14,            // Scale down the logo
+    x: "-41vw",            // Move logo to the left (adjust based on your design)
+    y: "-44.5vh",            // Move logo to the top (adjust based on your design)
+    ease: "none",          // No easing for a smooth effect
+  });
+</script>
+
 
 <script type="text/javascript" id="mediaelement-core-js-before">
 var mejsL10n = {"language":"en","strings":{"mejs.download-file":"Download File","mejs.install-flash":"You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/","mejs.fullscreen":"Fullscreen","mejs.play":"Play","mejs.pause":"Pause","mejs.time-slider":"Time Slider","mejs.time-help-text":"Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.","mejs.live-broadcast":"Live Broadcast","mejs.volume-help-text":"Use Up\/Down Arrow keys to increase or decrease volume.","mejs.unmute":"Unmute","mejs.mute":"Mute","mejs.volume-slider":"Volume Slider","mejs.video-player":"Video Player","mejs.audio-player":"Audio Player","mejs.captions-subtitles":"Captions\/Subtitles","mejs.captions-chapters":"Chapters","mejs.none":"None","mejs.afrikaans":"Afrikaans","mejs.albanian":"Albanian","mejs.arabic":"Arabic","mejs.belarusian":"Belarusian","mejs.bulgarian":"Bulgarian","mejs.catalan":"Catalan","mejs.chinese":"Chinese","mejs.chinese-simplified":"Chinese (Simplified)","mejs.chinese-traditional":"Chinese (Traditional)","mejs.croatian":"Croatian","mejs.czech":"Czech","mejs.danish":"Danish","mejs.dutch":"Dutch","mejs.english":"English","mejs.estonian":"Estonian","mejs.filipino":"Filipino","mejs.finnish":"Finnish","mejs.french":"French","mejs.galician":"Galician","mejs.german":"German","mejs.greek":"Greek","mejs.haitian-creole":"Haitian Creole","mejs.hebrew":"Hebrew","mejs.hindi":"Hindi","mejs.hungarian":"Hungarian","mejs.icelandic":"Icelandic","mejs.indonesian":"Indonesian","mejs.irish":"Irish","mejs.italian":"Italian","mejs.japanese":"Japanese","mejs.korean":"Korean","mejs.latvian":"Latvian","mejs.lithuanian":"Lithuanian","mejs.macedonian":"Macedonian","mejs.malay":"Malay","mejs.maltese":"Maltese","mejs.norwegian":"Norwegian","mejs.persian":"Persian","mejs.polish":"Polish","mejs.portuguese":"Portuguese","mejs.romanian":"Romanian","mejs.russian":"Russian","mejs.serbian":"Serbian","mejs.slovak":"Slovak","mejs.slovenian":"Slovenian","mejs.spanish":"Spanish","mejs.swahili":"Swahili","mejs.swedish":"Swedish","mejs.tagalog":"Tagalog","mejs.thai":"Thai","mejs.turkish":"Turkish","mejs.ukrainian":"Ukrainian","mejs.vietnamese":"Vietnamese","mejs.welsh":"Welsh","mejs.yiddish":"Yiddish"}};
