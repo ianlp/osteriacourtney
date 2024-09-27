@@ -2013,74 +2013,69 @@ var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
 
 <script>
-  gsap.registerPlugin(ScrollTrigger);
-
-  let mm = gsap.matchMedia();
-
-  mm.add("(max-width: 389px)", () => {
-
-	gsap.to(".logo-container", {
+	gsap.registerPlugin(ScrollTrigger);
+  
+	let mm = gsap.matchMedia();
+  
+	function calculateYPosition() {
+	  // Calculate the Y offset to center the logo vertically
+	  let logoHeight = 145 / 128 * 75;  // Height based on 128:75 aspect ratio
+	  return -(window.innerHeight / 2 - logoHeight / 2);  // Centering the logo
+	}
+  
+	mm.add("(max-width: 389px)", () => {
+	  gsap.to(".logo-container", {
 		scrollTrigger: {
-			trigger: ".content",
-			start: "top top",        // Start the animation when the content hits the top of the viewport
-			end: "+=500",            // Duration of the animation
-			scrub: true,             // Smooth scrolling
+		  trigger: ".content",
+		  start: "top top",
+		  end: "+=500",
+		  scrub: true,
+		  onUpdate: () => gsap.set(".logo-container", { y: calculateYPosition() }) // Adjust Y dynamically
 		},
-		width: 145,               // Final width of 145px
+		width: 145,
 		height: function() {
-			return (145 / 128) * 75; // Maintain the 128:75 aspect ratio (85px height)
+		  return (145 / 128) * 75;
 		},
-		x: "-50vw",               // Move from the center to the left side of the viewport
-		y: function() {
-			return "-45vh";          // Move up using viewport-relative units
+		x: "-50vw",
+		ease: "none"
+	  });
+	});
+  
+	mm.add("(min-width: 390px) and (max-width: 819px)", () => {
+	  gsap.to(".logo-container", {
+		scrollTrigger: {
+		  trigger: ".content",
+		  start: "top top",
+		  end: "+=500",
+		  scrub: true,
+		  onUpdate: () => gsap.set(".logo-container", { y: calculateYPosition() - 7 }) // Adjust Y with additional offset
 		},
-		ease: "none",             // No easing for smooth animation
-		});
-});
-
-mm.add("(min-width: 390px) and (max-width: 819px) ", () => {
-
-	gsap.to(".logo-container", {
-  scrollTrigger: {
-    trigger: ".content",
-    start: "top top",        // Start the animation when the content hits the top of the viewport
-    end: "+=500",            // Duration of the animation
-    scrub: true,             // Smooth scrolling
-  },
-  width: 145,                // Scale down to 145px width
-  height: function() {
-    return (145 / 128) * 75; // Maintain the aspect ratio (height = 85px)
-  },
-  y: function() {
-    // Adjust Y movement from centered position
-    return -(window.innerHeight / 2 - 85 / 2) -7;  // Final position 7px higher than calculated
-  },
-  ease: "none",             // No easing for smooth scrolling effect
-});
-});
-
-mm.add("(min-width: 820px)  ", () => {
-
-gsap.to(".logo-container", {
-scrollTrigger: {
-trigger: ".content",
-start: "top top",        // Start the animation when the content hits the top of the viewport
-end: "+=500",            // Duration of the animation
-scrub: true,             // Smooth scrolling
-},
-width: 145,                // Scale down to 145px width
-height: function() {
-return (145 / 128) * 75; // Maintain the aspect ratio (height = 85px)
-},
-y: function() {
-// Adjust Y movement from centered position
-return -(window.innerHeight / 2 - 85 / 2) + 15;  // Final position 7px higher than calculated
-},
-ease: "none",             // No easing for smooth scrolling effect
-});
-});
-
-</script>
+		width: 145,
+		height: function() {
+		  return (145 / 128) * 75;
+		},
+		ease: "none"
+	  });
+	});
+  
+	mm.add("(min-width: 820px)", () => {
+	  gsap.to(".logo-container", {
+		scrollTrigger: {
+		  trigger: ".content",
+		  start: "top top",
+		  end: "+=500",
+		  scrub: true,
+		  onUpdate: () => gsap.set(".logo-container", { y: calculateYPosition() + 15 }) // Adjust Y with different offset
+		},
+		width: 145,
+		height: function() {
+		  return (145 / 128) * 75;
+		},
+		ease: "none"
+	  });
+	});
+  </script>
+  
 
 
 <script type="text/javascript" id="mediaelement-core-js-before">
