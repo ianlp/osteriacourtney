@@ -2013,69 +2013,77 @@ var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/ScrollTrigger.min.js"></script>
 
 <script>
-	gsap.registerPlugin(ScrollTrigger);
-  
-	let mm = gsap.matchMedia();
-  
-	function calculateYPosition() {
-	  // Calculate the Y offset to center the logo vertically
-	  let logoHeight = 145 / 128 * 75;  // Height based on 128:75 aspect ratio
-	  return -(window.innerHeight / 2 - logoHeight / 2);  // Centering the logo
-	}
-  
-	mm.add("(max-width: 389px)", () => {
-	  gsap.to(".logo-container", {
-		scrollTrigger: {
-		  trigger: ".content",
-		  start: "top top",
-		  end: "+=500",
-		  scrub: true,
-		  onUpdate: () => gsap.set(".logo-container", { y: calculateYPosition() }) // Adjust Y dynamically
-		},
-		width: 145,
-		height: function() {
-		  return (145 / 128) * 75;
-		},
-		x: "-50vw",
-		ease: "none"
-	  });
-	});
-  
-	mm.add("(min-width: 390px) and (max-width: 819px)", () => {
-	  gsap.to(".logo-container", {
-		scrollTrigger: {
-		  trigger: ".content",
-		  start: "top top",
-		  end: "+=500",
-		  scrub: true,
-		  onUpdate: () => gsap.set(".logo-container", { y: calculateYPosition() - 7 }) // Adjust Y with additional offset
-		},
-		width: 145,
-		height: function() {
-		  return (145 / 128) * 75;
-		},
-		ease: "none"
-	  });
-	});
-  
-	mm.add("(min-width: 820px)", () => {
-	  gsap.to(".logo-container", {
-		scrollTrigger: {
-		  trigger: ".content",
-		  start: "top top",
-		  end: "+=500",
-		  scrub: true,
-		  onUpdate: () => gsap.set(".logo-container", { y: calculateYPosition() + 15 }) // Adjust Y with different offset
-		},
-		width: 145,
-		height: function() {
-		  return (145 / 128) * 75;
-		},
-		ease: "none"
-	  });
-	});
-  </script>
-  
+  gsap.registerPlugin(ScrollTrigger);
+
+  let mm = gsap.matchMedia();
+
+  mm.add("(max-width: 389px)", () => {
+
+	gsap.to(".logo-container", {
+  scrollTrigger: {
+    trigger: ".content",        // The element that triggers the scroll animation
+    start: "top top",           // Start when the content hits the top of the viewport
+    end: "+=500",               // Duration of the scroll (how far it should animate)
+    scrub: true,                // Smooth scrolling behavior
+  },
+  top: "11px",                  // Move the element 11px from the top of the viewport
+  left: "50%",                  // Keep it horizontally centered
+  transform: "translateX(-50%)", // Only horizontally center it
+  ease: "none"                  // No easing for smooth transition
+});
+
+// Initial centered position on load
+gsap.set(".logo-container", {
+  top: "50%",                   // Center it vertically on load
+  left: "50%",                  // Center it horizontally on load
+  transform: "translate(-50%, -50%)",  // Center both horizontally and vertically
+  position: "fixed"             // Keep it in a fixed position
+});
+});
+
+mm.add("(min-width: 390px) and (max-width: 819px) ", () => {
+
+	gsap.to(".logo-container", {
+  scrollTrigger: {
+    trigger: ".content",
+    start: "top top",        // Start the animation when the content hits the top of the viewport
+    end: "+=500",            // Duration of the animation
+    scrub: true,             // Smooth scrolling
+  },
+  width: 145,                // Scale down to 145px width
+  height: function() {
+    return (145 / 128) * 75; // Maintain the aspect ratio (height = 85px)
+  },
+  y: function() {
+    // Adjust Y movement from centered position
+    return -(window.innerHeight / 2 - 85 / 2) -7;  // Final position 7px higher than calculated
+  },
+  ease: "none",             // No easing for smooth scrolling effect
+});
+});
+
+mm.add("(min-width: 820px)  ", () => {
+
+gsap.to(".logo-container", {
+scrollTrigger: {
+trigger: ".content",
+start: "top top",        // Start the animation when the content hits the top of the viewport
+end: "+=500",            // Duration of the animation
+scrub: true,             // Smooth scrolling
+},
+width: 145,                // Scale down to 145px width
+height: function() {
+return (145 / 128) * 75; // Maintain the aspect ratio (height = 85px)
+},
+y: function() {
+
+return -(window.innerHeight / 2 - 85 / 2) + 15;  // Final position 7px higher than calculated
+},
+ease: "none",             // No easing for smooth scrolling effect
+});
+});
+
+</script>
 
 
 <script type="text/javascript" id="mediaelement-core-js-before">
