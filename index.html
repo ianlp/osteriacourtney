@@ -2088,7 +2088,7 @@ gsap.utils.toArray('.gsap-slide-up').forEach(element => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: element,      // Trigger the animation when the element scrolls into view
-      start: "top 90%",      // Start the animation when the top of the element reaches 80% of the viewport height
+      start: "top 100%",      // Start the animation when the top of the element reaches 80% of the viewport height
       end: "top 50%",        // End the animation when the top of the element reaches 50% of the viewport
       scrub: true,           // Smoothly sync the animation with the scroll
       markers: false         // Set to true to debug trigger points
@@ -2098,14 +2098,14 @@ gsap.utils.toArray('.gsap-slide-up').forEach(element => {
   // Add opacity animation (faster)
   tl.fromTo(element, 
     { opacity: 0 },          // Start invisible
-    { opacity: 1, duration: 0.2, ease: "power2.out" },  // Faster opacity animation
+    { opacity: 1, duration: 0.5, ease: "power2.out" },  // Faster opacity animation
     0 // Start this animation at the beginning of the timeline
   );
 
   // Add y-position animation (slower)
   tl.fromTo(element, 
-    { y: "50%" },            // Start 50% below its natural position
-    { y: "0%", duration: 1.5, ease: "power4.out" }, // Slower y-position animation
+    { y: "30%" },            // Start 50% below its natural position
+    { y: "0%", duration: .5, ease: "power4.out" }, // Slower y-position animation
     0 // Start at the same time as opacity animation, but it will last longer
   );
 
