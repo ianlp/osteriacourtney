@@ -2014,115 +2014,107 @@ var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$
 <script>
   gsap.registerPlugin(ScrollTrigger, Flip);
 
- // Helper function to adjust positioning based on viewport
-function adjustLogoPosition() {
-  const logoHeight = 145; // Adjust to your needs
-  const logoY = -(window.innerHeight / 2 - logoHeight / 2) - 7;
-  return logoY;
-}
+  let mm = gsap.matchMedia();
 
-let mm = gsap.matchMedia();
+  // 1) Small screens
+  mm.add("(max-width: 389px)", () => {
+    // We'll create a timeline that pins the logo, then animates it from large/centered to normal size
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".u-content-background",
+        start: "top bottom",
+        end: "top center",
+        pin: ".logo-container",    // Keep the logo pinned
+        pinSpacing: false,         // No extra white space added
+        scrub: true,
+        markers: false             // Set to true if you want to debug positions
+      }
+    });
 
-// Media query for small screens
-mm.add("(max-width: 389px)", () => {
-
-  ScrollTrigger.create({
-    animation: gsap.from(".logo-container", {
+    // Animate from bigger/centered to final
+    tl.from(".logo-container", {
       y: "50vh",
       scale: 4,
       yPercent: -50,
-    }),
-    scrub: true,
-    trigger: ".u-content-background",
-    start: "top bottom",
-    endTrigger: '.u-content-background',
-    end: 'top center',
-    markers: true
+      ease: "none"
+    });
   });
 
-});
+  // 2) Medium screens
+  mm.add("(min-width: 390px) and (max-width: 819px)", () => {
+    // Pin the logo at the top and animate to your desired size
+    ScrollTrigger.create({
+      trigger: ".content",
+      start: "top top",
+      end: "+=500",         // Adjust to suit how far you want the pin effect
+      pin: ".logo-container",
+      pinSpacing: false,
+      scrub: true
+    });
 
-// Media query for medium screens
-mm.add("(min-width: 390px) and (max-width: 819px)", () => {
+    // Animate the logo’s size
+    gsap.to(".logo-container", {
+      width: 145,
+      height: (145 / 128) * 75,
+      ease: "none"
+    });
+  });
 
-  gsap.to(".logo-container", {
-    scrollTrigger: {
+  // 3) Large screens
+  mm.add("(min-width: 820px)", () => {
+    // Similar pinned approach for large screens
+    ScrollTrigger.create({
       trigger: ".content",
       start: "top top",
       end: "+=500",
-      scrub: true,
-    },
-    width: 145,
-    height: function() {
-      return (145 / 128) * 75;
-    },
-    y: adjustLogoPosition,  // Call function to adjust y position
-    ease: "none",
-  });
-});
+      pin: ".logo-container",
+      pinSpacing: false,
+      scrub: true
+    });
 
-// Media query for large screens
-mm.add("(min-width: 820px)", () => {
-
-  gsap.to(".logo-container", {
-    scrollTrigger: {
-      trigger: ".content",
-      start: "top top",
-      end: "+=500",
-      scrub: true,
-    },
-    width: 145,
-    height: function() {
-      return (145 / 128) * 75;
-    },
-    y: adjustLogoPosition, // Call function to adjust y position
-    ease: "none",
-  });
-});
-
-
-
-// Select all elements with the gsap-slide-up class and animate them
-gsap.utils.toArray('.gsap-slide-up').forEach(element => {
-  // Create a timeline for each element
-  let tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: element,      // Trigger the animation when the element scrolls into view
-      start: "top 100%",      // Start the animation when the top of the element reaches 80% of the viewport height
-      end: "top 50%",        // End the animation when the top of the element reaches 50% of the viewport
-      scrub: true,           // Smoothly sync the animation with the scroll
-      markers: false         // Set to true to debug trigger points
-    }
+    gsap.to(".logo-container", {
+      width: 145,
+      height: (145 / 128) * 75,
+      ease: "none"
+    });
   });
 
-  // Add opacity animation (faster)
-  tl.fromTo(element, 
-    { opacity: 0 },          // Start invisible
-    { opacity: 1, duration: 0.5, ease: "power2.out" },  // Faster opacity animation
-    0 // Start this animation at the beginning of the timeline
-  );
 
-  // Add y-position animation (slower)
-  tl.fromTo(element, 
-    { y: "30%" },            // Start 50% below its natural position
-    { y: "0%", duration: .5, ease: "power4.out" }, // Slower y-position animation
-    0 // Start at the same time as opacity animation, but it will last longer
-  );
+  // Slide-up animations for .gsap-slide-up elements
+  gsap.utils.toArray('.gsap-slide-up').forEach(element => {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: element,
+        start: "top 100%",
+        end: "top 50%",
+        scrub: true,
+        markers: false
+      }
+    });
 
-  tl.fromTo(element, 
-    { scale: 0.5 },          // Start at 50% size
-    { scale: 1, duration: .5, ease: "power4.out" },  // Scale to 100%
-    0 // Start at the same time as opacity and y-position animations
-  );
+    tl.fromTo(element,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5, ease: "power2.out" },
+      0
+    );
 
+    tl.fromTo(element,
+      { y: "30%" },
+      { y: "0%", duration: 0.5, ease: "power4.out" },
+      0
+    );
 
-});
-
-window.addEventListener("orientationchange", () => ScrollTrigger.refresh());
-		window.addEventListener("resize", () => ScrollTrigger.refresh());
-
+    tl.fromTo(element,
+      { scale: 0.5 },
+      { scale: 1, duration: 0.5, ease: "power4.out" },
+      0
+    );
+  });
 </script>
 
+
+
+	
 <style>
 	.gsap-slide-up {
   opacity: 0;
