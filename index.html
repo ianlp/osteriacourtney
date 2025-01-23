@@ -2046,19 +2046,19 @@ var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$
 		mm.add("(min-width: 390px) and (max-width: 819px)", () => {
 
 			gsap.to(".logo-container", {
-				scrollTrigger: {
-					trigger: ".content",
-					start: "top top",
-					end: "+=500",
-					scrub: true,
-				},
-				width: 145,
-				height: function () {
-					return (145 / 128) * 75;
-				},
-				y: adjustLogoPosition,  // Call function to adjust y position
-				ease: "none",
-			});
+  scrollTrigger: {
+    trigger: ".content",
+    start: "top top",
+    end: "+=500",
+    scrub: true,
+  },
+  width: 145,
+  height: function() {
+    return (145 / 128) * 75;
+  },
+  transform: `translateY(${adjustLogoPosition()}px)`,  // Use transform instead of y
+  ease: "none",
+});
 		});
 
 		// Media query for large screens
