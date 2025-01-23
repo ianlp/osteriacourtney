@@ -2025,22 +2025,22 @@ var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$
 
 		// Media query for small screens
 		mm.add("(max-width: 389px)", () => {
-
-			ScrollTrigger.create({
-				animation: gsap.from(".logo-container", {
-					y: "50vh",
-					scale: 4,
-					yPercent: -50,
-				}),
-				scrub: true,
-				trigger: ".u-content-background",
-				start: "top bottom",
-				endTrigger: '.u-content-background',
-				end: 'top center',
-				markers: true
-			});
-
-		});
+  gsap.to(".logo-container", {
+    scrollTrigger: {
+      trigger: ".content", // Use the same trigger as the medium screen version
+      start: "top top",    // Start animation when the top of the trigger hits the top of the viewport
+      end: "+=500",        // End animation after scrolling 500px
+      scrub: true,         // Smoothly sync the animation with the scroll
+      markers: true        // Enable markers for debugging (optional)
+    },
+    width: 145,            // Set the final width of the logo
+    height: function () {
+      return (145 / 128) * 75; // Maintain aspect ratio
+    },
+    y: adjustLogoPosition, // Use the same function to adjust the y position
+    ease: "none",          // No easing for smooth scrubbing
+  });
+});
 
 		// Media query for medium screens
 		mm.add("(min-width: 390px) and (max-width: 819px)", () => {
